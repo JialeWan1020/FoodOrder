@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Food Order System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>Admin Dashboard</h1>
+            <button id="logout-btn" class="logout-btn">Logout</button>
+        </header>
+        
+        <main class="admin-main">
+            <div class="admin-sidebar">
+                <button class="tab-btn active" data-tab="menu">Menu Items</button>
+                <button class="tab-btn" data-tab="orders">Orders</button>
+                <button class="tab-btn" data-tab="users">Users</button>
+            </div>
+            
+            <div class="admin-content">
+                <div id="menu-tab" class="tab-content active">
+                    <div class="content-header">
+                        <h2>Menu Items</h2>
+                        <button id="add-menu-item-btn" class="primary-btn">Add New Item</button>
+                    </div>
+                    <div id="menu-items-list" class="items-list"></div>
+                </div>
+                
+                <div id="orders-tab" class="tab-content">
+                    <h2>Orders</h2>
+                    <div id="orders-list" class="items-list"></div>
+                </div>
+                
+                <div id="users-tab" class="tab-content">
+                    <h2>Users</h2>
+                    <div id="users-list" class="items-list"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Menu Item Modal -->
+    <div id="menu-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Menu Item</h2>
+            <form id="menu-form">
+                <div class="form-section">
+                    <label for="item-name">Name:</label>
+                    <input type="text" id="item-name" required>
+                    
+                    <label for="item-description">Description:</label>
+                    <textarea id="item-description"></textarea>
+                    
+                    <label for="item-price">Price:</label>
+                    <input type="number" id="item-price" step="0.01" required>
+                    
+                    <label for="item-category">Category:</label>
+                    <input type="text" id="item-category">
+                </div>
+
+                <div class="form-section">
+                    <h3>Modifiers</h3>
+                    <button type="button" class="add-modifier-btn" onclick="addNewModifier()">Add New Modifier</button>
+                    <div id="modifiers-list"></div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Add-ons</h3>
+                    <button type="button" id="add-addon-btn">Add New Add-on</button>
+                    <div id="addons-list"></div>
+                </div>
+
+                <button type="submit">Save Item</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add-on Item Template -->
+    <template id="addon-template">
+        <div class="addon-item">
+            <input type="text" class="addon-name" placeholder="Add-on name" required>
+            <input type="number" class="addon-price" placeholder="Price" step="0.01" required>
+            <label>
+                <input type="checkbox" class="addon-available" checked>
+                Available
+            </label>
+            <button type="button" class="remove-addon-btn">Remove</button>
+        </div>
+    </template>
+
+    <!-- Modifier Group Template -->
+    <template id="modifier-template">
+        <div class="modifier-group">
+            <div class="modifier-header">
+                <input type="text" class="modifier-name" placeholder="Modifier name (e.g., Ice Level)" required>
+                <button type="button" class="remove-btn">Remove</button>
+            </div>
+            <div class="option-input-group">
+                <input type="text" class="new-option-input" placeholder="Add option (e.g., Regular)">
+                <button type="button" class="add-option-btn">Add Option</button>
+            </div>
+            <div class="option-chips"></div>
+        </div>
+    </template>
+
+    <script src="admin.js"></script>
+</body>
+</html> 

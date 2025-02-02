@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Order System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Food Order System</h1>
+            <div class="user-controls">
+                <span id="username"></span>
+                <button id="view-orders-btn" class="view-orders-btn">My Orders</button>
+                <button id="logout-btn" class="logout-btn">Logout</button>
+                <div class="cart-icon">
+                    🛒 <span id="cart-count">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="menu-container">
+                <h2>Menu Items</h2>
+                <div id="menu-items" class="menu-grid"></div>
+            </div>
+
+            <div class="cart-container" id="cart-container">
+                <h2>Your Cart</h2>
+                <div id="cart-items"></div>
+                <div class="cart-total">
+                    <span>Total: $</span>
+                    <span id="cart-total">0.00</span>
+                </div>
+                <button id="checkout-btn" class="checkout-btn">Checkout</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCheckoutModal()">&times;</span>
+            <h2>Checkout</h2>
+            <form id="checkout-form">
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div id="checkout-items"></div>
+                    <div class="total">
+                        <strong>Total: $<span id="checkout-total">0.00</span></strong>
+                    </div>
+                </div>
+                <button type="submit" class="primary-btn">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Orders Modal -->
+    <div id="orders-modal" class="modal">
+        <div class="modal-content orders-modal-content">
+            <span class="close" onclick="closeOrdersModal()">&times;</span>
+            <div class="orders-header">
+                <h2>My Orders</h2>
+                <button onclick="loadUserOrders()" class="refresh-btn">
+                    <span class="refresh-icon">🔄</span> Refresh
+                </button>
+            </div>
+            <div id="user-orders" class="user-orders"></div>
+        </div>
+    </div>
+
+    <!-- Item Customization Modal -->
+    <div id="customize-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCustomizeModal()">&times;</span>
+            <h2>Customize Your Order</h2>
+            <div id="item-details"></div>
+            
+            <div class="modifiers-section">
+                <h3>Modifiers</h3>
+                <div id="modifiers-container">
+                    <!-- Modifiers will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <div class="addons-section">
+                <h3>Add-ons</h3>
+                <div id="addons-container">
+                    <!-- Add-ons will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <div class="quantity-section">
+                <h3>Quantity</h3>
+                <div class="quantity-controls">
+                    <button onclick="updateQuantity(-1)">-</button>
+                    <span id="modal-quantity">1</span>
+                    <button onclick="updateQuantity(1)">+</button>
+                </div>
+            </div>
+
+            <div class="modal-total">
+                <h3>Total: $<span id="modal-total">0.00</span></h3>
+            </div>
+
+            <button onclick="addToCart()" class="primary-btn">Add to Cart</button>
+        </div>
+    </div>
+
+    <script src="menu.js"></script>
+</body>
+</html> 

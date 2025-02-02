@@ -1,0 +1,448 @@
+.admin-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-header {
+    background: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.admin-main {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    flex: 1;
+}
+
+.admin-sidebar {
+    background: white;
+    padding: 1rem;
+    border-right: 1px solid #eee;
+}
+
+.tab-btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    background: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+}
+
+.tab-btn.active {
+    background: #2ecc71;
+    color: white;
+}
+
+.admin-content {
+    padding: 2rem;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.primary-btn {
+    padding: 0.5rem 1rem;
+    background: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.items-list {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.logout-btn {
+    padding: 0.5rem 1rem;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal .close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal .close:hover {
+    color: #333;
+}
+
+.modal h2 {
+    margin: 0 0 1.5rem 0;
+    color: #2c3e50;
+}
+
+/* Form Sections */
+.form-section {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.form-section h3 {
+    margin: 0 0 1rem 0;
+    color: #2c3e50;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Modifier Styles */
+.modifier-group {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: white;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    position: relative;
+}
+
+.modifier-group .remove-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.modifier-group .remove-btn:hover {
+    background: #c82333;
+}
+
+.modifier-options {
+    margin-top: 1rem;
+}
+
+.modifier-options input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.option-list {
+    margin-top: 1rem;
+}
+
+.option-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.option-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    background: #e9ecef;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+.option-chip .remove-option {
+    cursor: pointer;
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.add-option-btn {
+    margin-top: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.add-option-btn:hover {
+    background: #218838;
+}
+
+/* Add-on Styles */
+.addon-item {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: white;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    position: relative;
+}
+
+.addon-item .form-group {
+    margin-bottom: 0.75rem;
+}
+
+.addon-item .form-group:last-child {
+    margin-bottom: 0;
+}
+
+.remove-addon-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.remove-addon-btn:hover {
+    background: #c82333;
+}
+
+/* Action Buttons */
+.form-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.primary-btn, .secondary-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.primary-btn {
+    background: #2ecc71;
+    color: white;
+}
+
+.primary-btn:hover {
+    background: #27ae60;
+}
+
+.secondary-btn {
+    background: #6c757d;
+    color: white;
+}
+
+.secondary-btn:hover {
+    background: #5a6268;
+}
+
+/* Checkbox Styles */
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+/* Input Styles */
+.addon-item input[type="text"],
+.addon-item input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.addon-item input[type="text"]:focus,
+.addon-item input[type="number"]:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Menu Item Styles */
+.menu-item {
+    border: 1px solid #eee;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.menu-item button {
+    margin-right: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.menu-item button:first-of-type {
+    background: #3498db;
+    color: white;
+}
+
+.menu-item button:last-of-type {
+    background: #e74c3c;
+    color: white;
+}
+
+/* Order Styles */
+.order-item {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.order-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.order-status.pending {
+    background: #f1c40f;
+    color: #fff;
+}
+
+.order-status.processing {
+    background: #3498db;
+    color: #fff;
+}
+
+.order-status.completed {
+    background: #2ecc71;
+    color: #fff;
+}
+
+.order-status.cancelled {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.order-details {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.order-details p {
+    margin: 0.5rem 0;
+}
+
+.order-items {
+    margin-bottom: 1rem;
+}
+
+.order-items h4 {
+    margin-bottom: 0.5rem;
+}
+
+.order-items ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.order-items li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.order-items li:last-child {
+    border-bottom: none;
+}
+
+.order-actions {
+    margin-top: 1rem;
+    text-align: right;
+}
+
+.status-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #3498db;
+    color: white;
+    font-weight: 500;
+}
+
+.status-btn:hover {
+    background: #2980b9;
+} 
