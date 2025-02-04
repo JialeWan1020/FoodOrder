@@ -1,23 +1,26 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "your_password",
-    "database": "food_order_db",
-    "host": "127.0.0.1",
+    "username": "foodorder_1vhr_user",
+    "password": "lZvzLFSaMvLRfk7hIdbcaJ9Si8IdYC7Y",
+    "database": "foodorder_1vhr",
+    "host": "dpg-cuh5372j1k6c73b5nup0-a",
     "dialect": "postgres"
   },
+
   "test": {
-    "username": "postgres",
-    "password": "your_password",
-    "database": "food_order_db_test",
-    "host": "127.0.0.1",
+    "username": "foodorder_1vhr_user",
+    "password": "lZvzLFSaMvLRfk7hIdbcaJ9Si8IdYC7Y",
+    "database": "foodorder_1vhr",
+    "host": "dpg-cuh5372j1k6c73b5nup0-a",
     "dialect": "postgres"
   },
-  "production": {
-    "username": "postgres",
-    "password": "your_password",
-    "database": "food_order_db_prod",
-    "host": "127.0.0.1",
+
+  "production": { 
+    "username": "foodorder_1vhr_user",
+    "password": "lZvzLFSaMvLRfk7hIdbcaJ9Si8IdYC7Y",
+    "database": "foodorder_1vhr",
+    "host": "dpg-cuh5372j1k6c73b5nup0-a",
     "dialect": "postgres"
   }
+
 } 
