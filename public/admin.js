@@ -25,10 +25,18 @@ document.querySelectorAll('.tab-btn').forEach(button => {
     });
 });
 
-// Load orders
+// Add date picker for filtering orders
+const dateInput = document.createElement('input');
+dateInput.type = 'date';
+dateInput.id = 'order-date-picker';
+dateInput.addEventListener('change', loadOrders);
+document.querySelector('.orders-header').appendChild(dateInput);
+
+// Modify loadOrders to use date filter
 async function loadOrders() {
     try {
-        const response = await fetch('/api/admin/orders', {
+        const date = document.getElementById('order-date-picker').value;
+        const response = await fetch(`/api/admin/orders${date ? `?date=${date}` : ''}`, {
             headers: {
                 'Authorization': `Bearer ${sessionStorage.getItem('token')}`
             }

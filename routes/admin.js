@@ -181,8 +181,12 @@ router.delete('/menu/:id', async (req, res) => {
 // Get all orders
 router.get('/orders', async (req, res) => {
     try {
+        const { date } = req.query;
+        const whereClause = date ? { createdAt: { [db.Sequelize.Op.eq]: new Date(date) } } : {};
+
         console.log('Fetching orders...');
         const orders = await db.Order.findAll({
+            where: whereClause,
             order: [['createdAt', 'DESC']],
             include: [{
                 model: db.User,

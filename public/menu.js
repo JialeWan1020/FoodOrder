@@ -273,7 +273,7 @@ function updateCartDisplay() {
     cartTotal.textContent = cart.reduce((sum, item) => sum + item.total, 0).toFixed(2);
 }
 
-// Load user's orders
+// Load user's orders for today
 async function loadUserOrders() {
     const refreshBtn = document.querySelector('.refresh-btn');
     if (refreshBtn) {
@@ -281,7 +281,8 @@ async function loadUserOrders() {
     }
 
     try {
-        const response = await fetch('/api/orders/user', {
+        const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+        const response = await fetch(`/api/orders/user?date=${today}`, {
             headers: {
                 'Authorization': `Bearer ${sessionStorage.getItem('token')}`
             }
