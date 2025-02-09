@@ -8,6 +8,7 @@ const orderRoutes = require('./routes/orders');
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin');
 const { authenticateToken } = require('./middleware/auth');
+const bcrypt = require('bcryptjs');
 
 const app = express();
 
@@ -106,9 +107,33 @@ async function startServer() {
             });
         });
 
+        // Create default admin user
+        await createDefaultAdmin();
+
     } catch (error) {
         console.error('Unable to start server:', error);
         process.exit(1);
+    }
+}
+
+async function createDefaultAdmin() {
+    try {
+        const adminExists = await sequelize.models.User.findOne({ where: { username: 'admin' } });
+        if (!adminExists) {
+            const hashedPassword = await bcrypt.hash('admin88', 10);
+            await sequelize.models.User.create({
+                username: 'admin',
+                password: hashedPassword,
+                email: 'admin@example.com', // Use a placeholder email
+                phone: '1234567890', // Use a placeholder phone number
+                role: 'admin'
+            });
+            console.log('Default admin user created.');
+        } else {
+            console.log('Admin user already exists.');
+        }
+    } catch (error) {
+        console.error('Error creating default admin user:', error);
     }
 }
 
