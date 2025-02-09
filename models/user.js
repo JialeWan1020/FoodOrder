@@ -1,3 +1,5 @@
+const bcrypt = require('bcryptjs');
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     id: {
@@ -40,8 +42,8 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   // Add password validation method
-  User.prototype.validatePassword = function(password) {
-    return password === this.password; // Note: In production, use proper password hashing
+  User.prototype.validatePassword = async function(password) {
+    return await bcrypt.compare(password, this.password);
   };
 
   return User;
